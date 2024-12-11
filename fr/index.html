@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenue dans votre logement</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header>
+  </header>
+
+  <div class="container">
+    <div class="menu">
+      <a href="" class="menu-item" data-target="wifi">
+        <img src="wifi-icon.png" alt="Wi-Fi" />
+        <p>WiFi</p>
+      </a>
+      <a href="" class="menu-item" data-target="digicode">
+        <img src="digicode-icon.png" alt="Digicode" />
+        <p>Digicode</p>
+      </a>
+    </div>
+  </div>
+
+  <div class="content">
+    <section id="wifi" class="hidden">
+      <h2>Informations WiFi</h2>
+      <p>Nom du réseau : <strong>MonWifi</strong></p>
+      <p>Mot de passe : <strong>12345678</strong></p>
+      <a href="" class="menu-item" data-target="detailsWifi">
+        <img src="wifi-icon.png" alt="détails Wi-Fi" />
+        <p>Détails du WiFi</p>
+      </a>
+    </section>
+
+    <section id="detailsWifi" class="hidden">
+      <h2>Détails supplémentaires pour le WiFi</h2>
+      <p>Code d'accès : <strong>9876</strong></p>
+    </section>
+    
+
+    <section id="digicode" class="hidden">
+      <h2>Informations Digicode</h2>
+      <p>Code d'accès : <strong>9876</strong></p>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 [Nom du logement]</p>
+  </footer>
+  <script src="../fonctions.js"></script>
+</body>
+</html>
