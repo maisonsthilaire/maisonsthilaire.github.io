@@ -17,11 +17,10 @@ body {
 }
 
 
-  .menu {
-    display: flex;
+  .menu {    display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 20px
   }
   
   .menu-item {
@@ -42,7 +41,7 @@ body {
   
   .menu-item img {
     width: 40px;
-    height: 40px;
+    height: auto;
     margin-bottom: 10px;
   }
   
