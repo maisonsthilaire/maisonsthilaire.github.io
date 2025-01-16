@@ -3,10 +3,19 @@ body {
     /*padding: 0;*/
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
-    
     height: 100vh;
+    background-image: url(imagesEtVideos/imagefond.png);
   }
   
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: auto;
+    
+}
+
 
   .menu {
     display: flex;
@@ -53,5 +62,38 @@ body {
 }
 
 .content {
-    padding: 20px;
+  height: 100vh;
+  width: auto;
 }
+section {
+  background-color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
