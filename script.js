@@ -39,7 +39,7 @@ const hierarchy = {
     "dentistes": "sante",
     "cabinet_medical": "sante",
     "sante": "autourDeMoi",
-    "autourDeMoi": null, // Page parent pour "Autour de moi" (aucune)
+    "autourDeMoi": null,
     "numeros_utiles": null,
     "infos_pratiques": null,
     "infos_arrivee": null,
@@ -49,33 +49,22 @@ const hierarchy = {
 // Variable globale pour suivre la section actuellement visible
 let currentVisibleSection = null;
 
-
-
-
-
-
-
-// Fonction d'animation avec promesse
-function animateElement(element, startStyles, endStyles, duration = 300) {
+function animateElement(element, startStyles, endStyles, duration = 300) { // Fonction d'animation avec promesse
     return new Promise(resolve => {
-        // Appliquer les styles de départ
-        Object.assign(element.style, startStyles);
-
-        // Forcer le recalcul pour appliquer correctement la transition
-        element.offsetHeight; // Lecture de la propriété pour forcer le reflow
-
+        Object.assign(element.style, startStyles); // Appliquer les styles de départ
+        element.offsetHeight; // Forcer le recalcul de la propriété pour appliquer correctement la transition
         // Ajouter la transition et les styles de fin
         element.style.transition = `all ${duration}ms ease`;
         Object.assign(element.style, endStyles);
-
-        // Attendre la fin de l'animation
-        element.addEventListener('transitionend', () => {
+        element.addEventListener('transitionend', () => { // Attendre la fin de l'animation
             element.style.transition = ''; // Supprime la transition après l'animation
             resolve(); // Marque la fin de l'animation
         }, { once: true });
     });
 }
-async function showSection(targetId) {
+
+
+async function showSection(targetId) { // Fonction pour afficher une section
     const container = document.querySelector('.container'); // Page d'accueil
     const content = document.querySelector('.content'); // Conteneur des sections
     const currentSection = document.getElementById(currentVisibleSection); // Section visible actuelle
@@ -103,7 +92,6 @@ async function showSection(targetId) {
                 );
                 container.style.display = 'none';
             }
-    
             content.style.display = 'block';
             if (newSection) {
                 newSection.style.display = 'block';
@@ -125,7 +113,6 @@ async function showSection(targetId) {
             );
             currentSection.style.display = 'none'; // Masquer la section actuelle
         }
-
         content.style.display = 'none'; // Masquer tout le conteneur des sections
         container.style.display = 'flex'; // Réafficher la page d'accueil
         await animateElement(container, 
@@ -137,16 +124,7 @@ async function showSection(targetId) {
     }
 }
 
-
-
-
-
-
-
-
-
-// Gestion des clics sur les éléments du menu
-document.querySelectorAll('.menu-item').forEach(item => {
+document.querySelectorAll('.menu-item').forEach(item => { // Gestion des clics sur les éléments du menu
     item.addEventListener('click', event => {
         event.preventDefault(); // Empêche le comportement par défaut
         const targetId = event.currentTarget.getAttribute('data-target');
@@ -156,8 +134,7 @@ document.querySelectorAll('.menu-item').forEach(item => {
     });
 });
 
-// Gestion du clic sur le bouton "Retour"
-document.getElementById('back-button').addEventListener('click', () => {
+document.getElementById('back-button').addEventListener('click', () => { // Gestion du clic sur le bouton "Retour"
     if (currentVisibleSection) {
         const parentId = hierarchy[currentVisibleSection]; // Trouve la page parent
         if (parentId) {
@@ -168,8 +145,7 @@ document.getElementById('back-button').addEventListener('click', () => {
     }
 });
 
-// Affichage initial basé sur le hash dans l'URL
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => { // Affichage initial basé sur le hash dans l'URL
     const initialId = location.hash ? location.hash.substring(1) : null;
     if (initialId) {
         showSection(initialId); // Affiche la section correspondant au hash
@@ -177,28 +153,3 @@ document.addEventListener('DOMContentLoaded', () => {
         showSection(null); // Par défaut, aucune section affichée (ou accueil)
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
