@@ -1,0 +1,27 @@
+{
+    "fr": {
+      "wifi": {
+        "titre": "Informations WiFi",
+        "networkName": "Nom du réseau : <strong>MonWifi</strong>",
+        "password": "Mot de passe : <strong>12345678</strong>"
+      },
+      "digicode": {
+        "title": "Informations Digicodes",
+        "portail": "Code d'accès : <strong>Voir le message que vous avez reçu après votre réservation</strong>",
+        "entree": "Code d'accès : <strong>Voir le message que vous avez reçu après votre réservation</strong>"
+      }
+    },
+    "en": {
+      "wifi": {
+        "title": "WiFi Information",
+        "networkName": "Network Name: <strong>MyWifi</strong>",
+        "password": "Password: <strong>12345678</strong>"
+      },
+      "digicode": {
+        "title": "Digicode Information",
+        "portail": "Access Code: <strong>Check the message you received after booking</strong>",
+        "entree": "Access Code: <strong>Check the message you received after booking</strong>"
+      }
+    }
+  }
+  

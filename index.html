@@ -7,6 +7,14 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <select id="language-selector">
+    <option value="fr" selected>Français</option>
+    <option value="en">English</option>
+  </select>
+  
+
+
+
   <div class="container">
     <div class="menu">
       <a href="" class="menu-item" data-target="wifi">
@@ -47,17 +55,17 @@
     </a>
     <!------------------------Wifi------------------------>
     <section id="wifi" class="hidden">
-      <h2>Informations WiFi</h2>
-      <p>Nom du réseau : <strong>MonWifi</strong></p>
-      <p>Mot de passe : <strong>12345678</strong></p>
+      <h2 data-translate="wifi.titre">Informations WiFi</h2>
+      <p data-translate="wifi.networkName">Nom du réseau : <strong>MonWifi</strong></p>
+      <p data-translate="wifi.password">Mot de passe : <strong>12345678</strong></p>
     </section>
     <!------------------------Digicode------------------------>
     <section id="digicode" class="hidden">
-      <h2>Informations Digicodes</h2>
+      <h2 data-translate="digicode.title">Informations Digicodes</h2>
       <h3>Boite à clés portail</h3>
-      <p>Code d'accès : <strong>Voir le message que vous avez reçu après votre résevation</strong></p>
+      <p data-translate="digicode.portail">Code d'accès : <strong>Voir le message que vous avez reçu après votre réservation</strong></p>
       <h3>Boite à clés porte d'entrée</h3>
-      <p>Code d'accès : <strong>Voir le message que vous avez reçu après votre résevation</strong></p>
+      <p data-translate="digicode.entree">Code d'accès : <strong>Voir le message que vous avez reçu après votre réservation</strong></p>
     </section>
     <!------------------------Autour de moi------------------------>
     <section id="autourDeMoi" class="hidden">

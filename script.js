@@ -140,3 +140,50 @@ document.addEventListener('DOMContentLoaded', () => { // Affichage initial basé
         showSection(null); // Par défaut, aucune section affichée (ou accueil)
     }
 });
+
+
+let translations = {};
+let currentLanguage = "fr"; // Langue par défaut
+
+// Fonction pour charger les traductions depuis le fichier JSON
+async function loadTranslations() {
+  try {
+    const response = await fetch('translations.json');
+    translations = await response.json();
+    applyTranslations(); // Applique les traductions par défaut
+  } catch (error) {
+    console.error("Erreur lors du chargement des traductions :", error);
+  }
+}
+
+// Fonction pour appliquer les traductions à la page
+function applyTranslations() {
+    document.querySelectorAll('[data-translate]').forEach(el => {
+      const key = el.getAttribute('data-translate'); // Récupère la clé
+      const keys = key.split('.'); // Découpe les clés imbriquées (ex. : "wifi.title")
+      let translation = translations[currentLanguage];
+  
+      // Navigue dans l'objet JSON pour trouver la traduction
+      keys.forEach(k => {
+        if (translation) {
+          translation = translation[k];
+        }
+      });
+  
+      // Applique la traduction si elle existe
+      if (translation) {
+        el.innerHTML = translation;
+      }
+    });
+  }
+
+// Gestion du changement de langue
+document.getElementById('language-selector').addEventListener('change', event => {
+  currentLanguage = event.target.value;
+  applyTranslations();
+});
+
+// Charger les traductions au démarrage
+document.addEventListener('DOMContentLoaded', () => {
+  loadTranslations();
+});

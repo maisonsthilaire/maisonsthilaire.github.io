@@ -6,6 +6,25 @@ body {
   height: 100vh;
   background-image: url(imagesEtVideos/imagefond.png);
 }
+
+#language-selector {
+  position: fixed; /* Reste fixe à l'écran */
+  top: 10px; /* Distance depuis le haut de l'écran */
+  right: 10px; /* Distance depuis la droite de l'écran */
+  z-index: 1000; /* S'assure qu'il est au-dessus des autres éléments */
+  padding: 5px; /* Ajoute un peu d'espace autour du texte */
+  font-size: 14px; /* Taille de texte pour une bonne lisibilité */
+  background-color: white; /* Fond pour le rendre lisible */
+  border: 1px solid #ccc; /* Bordure légère pour la distinction */
+  border-radius: 5px; /* Coins arrondis */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre pour un effet visuel agréable */
+}
+
+
+
+
+
+
   
 .container {
   display: flex;
