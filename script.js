@@ -58,62 +58,49 @@ function animateElement(element, startStyles, endStyles, duration = 300) { // Fo
         Object.assign(element.style, endStyles);
         element.addEventListener('transitionend', () => { // Attendre la fin de l'animation
             element.style.transition = ''; // Supprime la transition après l'animation
+            element.style.transform = '';
+            element.style.opacity = '';
             resolve(); // Marque la fin de l'animation
         }, { once: true });
     });
 }
-
 
 async function showSection(targetId) { // Fonction pour afficher une section
     const container = document.querySelector('.container'); // Page d'accueil
     const content = document.querySelector('.content'); // Conteneur des sections
     const currentSection = document.getElementById(currentVisibleSection); // Section visible actuelle
     const newSection = document.getElementById(targetId); // Nouvelle section cible
-
     if (targetId && targetId !== currentVisibleSection) {
-        if (currentSection && content.style.display === 'block') {
+        if (content.style.display === 'block') {
             // Pas d'animation si on est entre sections secondaires
             currentSection.style.display = 'none';
             newSection.style.display = 'block';
         } else {
-            // Avec animation pour autres transitions
-            if (currentSection) {
-                await animateElement(currentSection, 
-                    { transform: 'translateY(0)', opacity: '1' },
-                    { transform: 'translateY(100%)', opacity: '0' },
-                    300
-                );
-                currentSection.style.display = 'none';
-            } else {
-                await animateElement(container, 
-                    { transform: 'translateY(0)', opacity: '1' },
-                    { transform: 'translateY(-100%)', opacity: '0' },
-                    300
-                );
-                container.style.display = 'none';
-            }
-            content.style.display = 'block';
-            if (newSection) {
-                newSection.style.display = 'block';
-                await animateElement(newSection, 
-                    { transform: 'translateY(100%)', opacity: '0' },
-                    { transform: 'translateY(0)', opacity: '1' },
-                    300
-                );
-            }
-        }
-        currentVisibleSection = targetId;
-    } else {
-        // Quand on revient à la page d'accueil
-        if (currentSection) {
-            await animateElement(currentSection, 
+            // Avec animation pour autres transitions (ex. depuis l'accueil)
+            await animateElement(container, 
                 { transform: 'translateY(0)', opacity: '1' },
-                { transform: 'translateY(100%)', opacity: '0' },
+                { transform: 'translateY(-100%)', opacity: '0' },
                 300
             );
-            currentSection.style.display = 'none'; // Masquer la section actuelle
+            container.style.display = 'none';
+            newSection.style.display = 'block';
+            content.style.display = 'block';
+            await animateElement(content, 
+                { transform: 'translateY(100%)', opacity: '0' },
+                { transform: 'translateY(0)', opacity: '1' },
+                300
+            );
         }
+        currentVisibleSection = targetId;
+    } else {// Quand on revient à la page d'accueil
+        // Anime la div `content` pour la masquer
+        await animateElement(content, 
+            { transform: 'translateY(0)', opacity: '1' }, // Styles initiaux
+            { transform: 'translateY(100%)', opacity: '0' }, // Styles finaux
+            300
+        );
         content.style.display = 'none'; // Masquer tout le conteneur des sections
+        currentSection.style.display = 'none'; // Masque la section actuelle au besoin
         container.style.display = 'flex'; // Réafficher la page d'accueil
         await animateElement(container, 
             { transform: 'translateY(-100%)', opacity: '0' },
