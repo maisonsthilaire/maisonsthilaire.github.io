@@ -70,13 +70,16 @@ async function showSection(targetId) { // Fonction pour afficher une section
     const content = document.querySelector('.content'); // Conteneur des sections
     const currentSection = document.getElementById(currentVisibleSection); // Section visible actuelle
     const newSection = document.getElementById(targetId); // Nouvelle section cible
+
+    document.body.classList.add('no-scroll');
+
     if (targetId && targetId !== currentVisibleSection) {
         if (content.style.display === 'block') {
             // Pas d'animation si on est entre sections secondaires
             currentSection.style.display = 'none';
             newSection.style.display = 'block';
         } else {
-            // Avec animation pour autres transitions (ex. depuis l'accueil)
+            // Avec animation pour autres transitions
             await animateElement(container, 
                 { transform: 'translateY(0)', opacity: '1' },
                 { transform: 'translateY(-100%)', opacity: '0' },
@@ -109,6 +112,9 @@ async function showSection(targetId) { // Fonction pour afficher une section
         );
         currentVisibleSection = null;
     }
+    setTimeout(() => {
+        document.body.classList.remove('no-scroll');
+    }, 300)
 }
 
 document.querySelectorAll('.menu-item').forEach(item => { // Gestion des clics sur les éléments du menu
