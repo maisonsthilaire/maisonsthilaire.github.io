@@ -10,7 +10,7 @@ body {
   background-repeat: no-repeat;
 }
 
-/*"correction" posibilité de scroll pendant l'animation d'ouverture et de fermeture*/
+/*"Correction" posibilité de scroll pendant l'animation d'ouverture et de fermeture*/
 ::-webkit-scrollbar {
   display: none;
 }
@@ -19,34 +19,22 @@ body {
   height: 100vh;
   width: 100vw;
 }
-
-
-
-
-/* Pour Firefox */
-html {
+html {/* Pour Firefox */
   scrollbar-width: none;
 }
 
-
-
-
-
 #language-selector {
-  position: fixed; /* Reste fixe à l'écran */
-  top: 10px; /* Distance depuis le haut de l'écran */
-  left: 10px; /* Distance depuis la droite de l'écran */
+  position: fixed;
+  top: 10px;
+  left: 400px;
   z-index: 1000; /* S'assure qu'il est au-dessus des autres éléments */
-  padding: 5px; /* Ajoute un peu d'espace autour du texte */
-  font-size: 14px; /* Taille de texte pour une bonne lisibilité */
-  background-color: white; /* Fond pour le rendre lisible */
-  border: 1px solid #ccc; /* Bordure légère pour la distinction */
-  border-radius: 5px; /* Coins arrondis */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre pour un effet visuel agréable */
+  padding: 5px;
+  font-size: 14px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
-
-
 
 input {
   position: fixed;
@@ -54,145 +42,172 @@ input {
 }
 
 label {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    border: none;
-    outline: none;
-    background: none;
-    cursor: pointer;
-  }
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
   
-  label::before {
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    content: "";
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-  }
+label::before {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
   
-  label .burger {
-    position: fixed;
-    top: 1em;
-    right: 1em;
-    z-index: 3;
-    width: 2em;
-    height: 2em;
-    margin: 0;
-    padding: 0;
-    transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-  }
+label .burger {
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  z-index: 3;
+  width: 2em;
+  height: 2em;
+  margin: 0;
+  padding: 0;
+  transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
   
-  label .burger::before,
-  label .burger .bar,
-  label .burger::after {
-    position: absolute;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: 12%;
-    background: #000;
-    content: "";
-    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-  }
-  
-  label .burger .bar {
-    top: 44%;
-  }
-  
-  label .burger::before {
-    top: 0;
-    transform-origin: top left;
-  }
-  
-  label .burger::after {
-    bottom: 0;
-    transform-origin: bottom left;
-  }
-  
-  input:focus + label .burger,
-  label:hover .burger {
-    opacity: 0.75;
-  }
+label .burger::before,
+label .burger .bar,
+label .burger::after {
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 12%;
+  background: #000;
+  content: "";
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+label .burger .bar {
+  top: 44%;
+}
+
+label .burger::before {
+  top: 0;
+  transform-origin: top left;
+}
+
+label .burger::after {
+  bottom: 0;
+  transform-origin: bottom left;
+}
+
+input:focus + label .burger,
+label:hover .burger {
+  opacity: 0.75;
+}
 
 
 nav {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: flex-start;
-    transform: translate3d(0, 0, 0);
-    transform: translateX(100%);
-    will-change: transform;
-    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-  }
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
   
-  nav::before {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    z-index: -1;
-    width: 25em;
-    border-radius: 3vh 0 0 3vh;
-    background: #fff;
-    content: "";
-    transform: translateX(100%);
-    transform-origin: bottom left;
-    will-change: transform;
-    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-  }
+  transform: translate3d(0, 0, 0);
+  transform: translateX(100%);
+  will-change: transform;
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
   
-  nav a {
-    margin: 0.5em 0;
-    padding: 0.2em 2em;
-    font-size: 1.5em;
-    color: #000;
-    text-decoration: none;
-    font-weight: 500;
-    transform: translateX(100%);
-    transition: color 0.15s, transform 0.5s;
-    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-  }
-  
-  nav a:nth-child(1) {
-    transition-delay: 0s, 100ms;
-  }
-  
-  nav a:nth-child(2) {
-    transition-delay: 0s, 150ms;
-  }
-  
-  nav a:nth-child(3) {
-    transition-delay: 0s, 200ms;
-  }
-  
-  nav a:nth-child(4) {
-    transition-delay: 0s, 250ms;
-  }
-  
-  nav a:nth-child(5) {
-    transition-delay: 0s, 300ms;
-  }
-  
-  nav a:nth-child(6) {
-    transition-delay: 0s, 350ms;
-  }
-  
-  nav a:hover,
-  nav a:focus {
-    color: #1950FF;
-  }
+nav::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  width: 25em;
+  border-radius: 3vh 0 0 3vh;
+  background: #fff;
+  content: "";
+  transform: translateX(100%);
+  transform-origin: bottom left;
+  will-change: transform;
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+nav a {
+  display: block;
+  margin: 0.5em 0;  /* Marges pour créer l'espacement */
+  padding: 0.5em 2em;
+  font-size: 1.5em;
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.15s, transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/*--------------------Lignes qui sépare les éléments du menu latéral--------------------*/
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5em;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+}
+nav a:first-child::before,
+nav a:first-child::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+}
+nav a:first-child::before {
+  top: -0.5em;
+}
+nav a:first-child::after {
+  bottom: -0.5em;
+}
+
+/*--------------------Affichage élement par élement--------------------*/
+nav a:nth-child(1) {
+  transition-delay: 0s, 100ms;
+}
+
+nav a:nth-child(2) {
+  transition-delay: 0s, 150ms;
+}
+
+nav a:nth-child(3) {
+  transition-delay: 0s, 200ms;
+}
+
+nav a:nth-child(4) {
+  transition-delay: 0s, 250ms;
+}
+
+nav a:nth-child(5) {
+  transition-delay: 0s, 300ms;
+}
+
+nav a:nth-child(6) {
+  transition-delay: 0s, 350ms;
+}
+
+nav a:hover,
+nav a:focus {
+  color: #1950FF;
+}
   
 [id="navcheck"]:checked + label::before {
   opacity: 1;
