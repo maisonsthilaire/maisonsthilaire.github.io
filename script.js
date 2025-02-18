@@ -74,6 +74,8 @@ async function showSection(targetId) { // Fonction pour afficher une section
     document.body.classList.add('no-scroll');
 
     if (targetId && targetId !== currentVisibleSection) {
+        // Mettre à jour l'icône et le texte du header
+        updateHeader(targetId);
         if (content.style.display === 'block') {
             // Pas d'animation si on est entre sections secondaires
             currentSection.style.display = 'none';
@@ -193,3 +195,80 @@ document.getElementById('language-selector').addEventListener('change', event =>
 document.addEventListener('DOMContentLoaded', () => {
   loadTranslations();
 });
+
+
+
+const sectionParents = {// Sert a ne pas charger pour rien l'image en haut a chaque affichage de section
+    "wifi": "wifi",
+    "digicode": "digicode",
+    "autourDeMoi": "autourDeMoi",
+    "transports": "autourDeMoi",
+    "metro": "autourDeMoi",
+    "bus": "autourDeMoi",
+    "taxis": "autourDeMoi",
+    "aeroports": "autourDeMoi",
+    "trains": "autourDeMoi",
+    "activites": "autourDeMoi",
+    "numeros_utiles": "numeros_utiles",
+    "infos_pratiques": "infos_pratiques",
+    "infos_arrivee": "infos_arrivee",
+    "infos_depart": "infos_depart"
+};
+// Contenu des icônes et textes pour chaque catégorie principale
+const headerContent = {
+    "wifi": { icon: "imagesEtVideos/wifi-icon.svg", text: "WiFi" },
+    "digicode": { icon: "imagesEtVideos/digicode-icon.svg", text: "Digicode" },
+    "autourDeMoi": { icon: "imagesEtVideos/autourDeMoi-icon.svg", text: "Autour de Moi" },
+    "numeros_utiles": { icon: "imagesEtVideos/numeros_utiles-icon.svg", text: "Numéros Utiles" },
+    "infos_pratiques": { icon: "imagesEtVideos/infos_pratiques-icon.png.svg", text: "Infos Pratiques" },
+    "infos_arrivee": { icon: "imagesEtVideos/infos_arrivee-icon.svg", text: "Infos Arrivée" },
+    "infos_depart": { icon: "imagesEtVideos/infos_depart-icon.svg", text: "Infos Départ" }
+};
+let currentHeaderCategory = null; // Stocke la dernière catégorie affichée
+
+function updateHeader(sectionId) {
+    const headerIcon = document.querySelector(".header-logo");
+    const headerText = document.querySelector(".header-text");
+
+    // Déterminer la catégorie principale de la section actuelle
+    const parentCategory = sectionParents[sectionId] || sectionId;
+
+    // Vérifier si la catégorie affichée est déjà correcte
+    if (parentCategory === currentHeaderCategory) {
+        //console.log("c'est une sous page ou on réaffiche la même page depuis l'accueil");
+        return; // Rien ne change, on évite de recharger l'image
+    }
+
+    // Mise à jour uniquement si nécessaire
+    if (headerContent[parentCategory]) {
+        headerIcon.src = headerContent[parentCategory].icon;
+        headerIcon.alt = headerContent[parentCategory].text;
+        headerText.textContent = headerContent[parentCategory].text;
+
+        // Met à jour la catégorie affichée pour éviter de recharger inutilement
+        currentHeaderCategory = parentCategory;
+        //console.log("c'est un chagement de catégorie, on change l'image");
+    }
+}
+
+
+function copyToClipboard() {
+    const wifiKey = "Londresuk"; // Récupère la clé WiFi
+    const button = document.querySelector(".copy-btn"); // Sélectionne le bouton
+
+    // Copier le texte dans le presse-papiers
+    navigator.clipboard.writeText(wifiKey).then(() => {
+        // Modifier le bouton après la copie
+        button.textContent = "Code copié";
+        button.style.backgroundColor = "#007BFF"; // Bleu
+
+        // Réinitialiser après 2 secondes
+        setTimeout(() => {
+            button.textContent = "Copier";
+            button.style.backgroundColor = "#ff4d4d"; // Rouge
+        }, 3000);
+    }).catch(err => {
+        console.error("Erreur lors de la copie :", err);
+    });
+}
+

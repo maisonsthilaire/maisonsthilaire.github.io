@@ -11,7 +11,8 @@
     <option value="fr" selected>Français</option>
     <option value="en">English</option>
   </select>
-
+  <div>
+  <!--
   <input type="checkbox" id="navcheck" role="button" title="menu">
   <label for="navcheck" aria-hidden="true" title="menu">
   <span class="burger">
@@ -27,7 +28,8 @@
     <a href="#">News</a>
     <a href="#">Contact</a>
   </nav>
-  
+  -->
+</div>
   <div class="container">
     <div class="menu">
       <a href="" class="menu-item" data-target="wifi">
@@ -62,15 +64,30 @@
   </div>
 
   <div class="content">
-  <!--<button id="back-button">Retour</button>-->
-    <a id="back-button" href="#" class="back-button">
-      <img src="imagesEtVideos/back-arrow.svg" alt="Retour">
-    </a>
+    <div class="header">
+      
+      <a id="back-button" href="#" class="back-button">
+        <img src="imagesEtVideos/back-arrow.svg" alt="Retour">
+      </a>
+      
+      <div id="header-icon">
+        <img src="imagesEtVideos/wifi-icon.svg" alt="Wi-Fi" class="header-logo">
+        <p class="header-text">WiFi</p>
+      </div>
+
+    </div>
     <!------------------------Wifi------------------------>
     <section id="wifi" class="hidden">
-      <h2 data-translate="wifi.titre">Informations WiFi</h2>
-      <p data-translate="wifi.networkName">Nom du réseau : <strong>MonWifi</strong></p>
-      <p data-translate="wifi.password">Mot de passe : <strong>12345678</strong></p>
+      <h1 data-translate="wifi.titre">Informations WiFi</h1>
+      <h2>Nom du wifi :</h2>
+      <div class="wifi-box">
+          <p class="wifi-info">Nom_du_wifi</p>
+      </div>
+      <h2>Clé du wifi :</h2>
+      <div class="wifi-box code">
+          <p class="wifi-info">Londresuk</p>
+          <button class="copy-btn" onclick="copyToClipboard()">Copier</button>
+      </div>
     </section>
     <!------------------------Digicode------------------------>
     <section id="digicode" class="hidden">
