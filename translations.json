@@ -7,8 +7,7 @@
       },
       "digicode": {
         "title": "Informations Digicodes",
-        "portail": "Code d'accès : <strong>Voir le message que vous avez reçu après votre réservation</strong>",
-        "entree": "Code d'accès : <strong>Voir le message que vous avez reçu après votre réservation</strong>"
+        "entree": "Le code de la boîte à clé se trouve dans le message qui vous a été envoyé sur airbnb et par message."
       }
     },
     "en": {
@@ -19,7 +18,6 @@
       },
       "digicode": {
         "title": "Digicode Information",
-        "portail": "Access Code: <strong>Check the message you received after booking</strong>",
         "entree": "Access Code: <strong>Check the message you received after booking</strong>"
       }
     }
