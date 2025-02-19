@@ -83,16 +83,16 @@ async function showSection(targetId) { // Fonction pour afficher une section
         } else {
             // Avec animation pour autres transitions
             await animateElement(container, 
-                { transform: 'translateY(0)', opacity: '1' },
-                { transform: 'translateY(-100%)', opacity: '0' },
+                { transform: 'translateY(0)', /*opacity: '1'*/ },
+                { transform: 'translateY(-100vh)', /*opacity: '0'*/ },
                 300
             );
             container.style.display = 'none';
             newSection.style.display = 'block';
             content.style.display = 'block';
             await animateElement(content, 
-                { transform: 'translateY(100%)', opacity: '0' },
-                { transform: 'translateY(0)', opacity: '1' },
+                { transform: 'translateY(100vh)', /*opacity: '0'*/ },
+                { transform: 'translateY(0)', /*opacity: '1'*/ },
                 300
             );
         }
@@ -100,16 +100,16 @@ async function showSection(targetId) { // Fonction pour afficher une section
     } else {// Quand on revient à la page d'accueil
         // Anime la div `content` pour la masquer
         await animateElement(content, 
-            { transform: 'translateY(0)', opacity: '1' }, // Styles initiaux
-            { transform: 'translateY(100%)', opacity: '0' }, // Styles finaux
+            { transform: 'translateY(0)', /*opacity: '1'*/ }, // Styles initiaux
+            { transform: 'translateY(100vh)', /*opacity: '0'*/ }, // Styles finaux
             300
         );
         content.style.display = 'none'; // Masquer tout le conteneur des sections
         currentSection.style.display = 'none'; // Masque la section actuelle au besoin
         container.style.display = 'flex'; // Réafficher la page d'accueil
         await animateElement(container, 
-            { transform: 'translateY(-100%)', opacity: '0' },
-            { transform: 'translateY(0)', opacity: '1' },
+            { transform: 'translateY(-100vh)', /*opacity: '0'*/ },
+            { transform: 'translateY(0)', /*opacity: '1'*/ },
             300
         );
         currentVisibleSection = null;
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => { // Affichage initial basé
     }
 });
 
-
+/*
 let translations = {};
 let currentLanguage = "fr"; // Langue par défaut
 
@@ -195,7 +195,7 @@ document.getElementById('language-selector').addEventListener('change', event =>
 document.addEventListener('DOMContentLoaded', () => {
   loadTranslations();
 });
-
+*/
 
 
 const sectionParents = {// Sert a ne pas charger pour rien l'image en haut a chaque affichage de section

@@ -334,7 +334,7 @@ section {
 .wifi-info {
   margin: 0;
   width: fit-content;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   text-align: center;
   padding: 2vh 5vw;
@@ -358,6 +358,13 @@ section {
   background-color: #e60000;
 }
 
+
+
+
+#digicode img {
+  max-width: 100%;
+  height: auto;
+}
 
 
 
